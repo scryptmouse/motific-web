@@ -1,0 +1,261 @@
+@lineHeight: 7px;
+
+@bgBase: #636363;
+@bgActive: #dedede;
+@bgHover: mix(@bgBase, @bgActive, 63%);
+
+@cornerRadius: (6 * @lineHeight) (3 * @lineHeight);
+
+.linkStyles() {
+  background: @bgBase;
+  margin: 0;
+
+  a {
+    display: block;
+    color: @bgActive;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  &.active {
+    background: @bgActive;
+
+    a {
+      color: @bgBase;
+    }
+  }
+
+  &:hover:not(.active) {
+    background: @bgHover;
+  }
+}
+
+body {
+  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAMAAAB883U1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAlQTFRF7+/v7u7u////REBVnAAAAAN0Uk5T//8A18oNQQAAABZJREFUeNpiYGJiYmBiYgRiBhAGCDAAALsAFJhiJ+UAAAAASUVORK5CYII=);
+}
+
+footer.main {
+  text-align: center;
+}
+
+nav.horizontal {
+  ul {
+    list-style: none;
+    text-align: center;
+    *overflow: hidden;
+    *clear: both;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 @lineHeight;
+    *clear: none;
+    *float: left;
+    *display: inline;
+
+    a {
+      display: block;
+    }
+  }
+}
+
+#option-nav {
+  li {
+    font-size: 3 * @lineHeight;
+
+    a {
+      padding: 2 * @lineHeight;
+    }
+
+    .linkStyles();
+
+    &:first-child {
+      border-bottom-left-radius: @cornerRadius;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: @cornerRadius;
+    }
+  }
+}
+
+#options {
+  min-height: 43 * @lineHeight;
+
+  legend h2 {
+    text-align: center;
+  }
+}
+
+.panes-content {
+  .pane:not(.active) {
+    display: none;
+  }
+
+  .pane.active {
+    display: block;
+  }
+}
+
+.word-lengths .panes-nav {
+  li {
+    display: block;
+    float: none;
+    clear: both;
+    height: 9 * @lineHeight;
+    line-height: 9 * @lineHeight;
+    margin: 0;
+    font-size: ceil(2.8 * @lineHeight);
+
+    .linkStyles();
+
+    a {
+      display: block;
+      font-weight: 700;
+      padding: 0 (4 * @lineHeight);
+      text-decoration: none;
+    }
+
+    &:first-child {
+      border-top-left-radius: @cornerRadius;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: @cornerRadius;
+    }
+  }
+}
+
+.word-lengths .panes-content {
+  .pane {
+    background: @bgActive;
+    height: 18 * @lineHeight;
+
+    border-top-right-radius: @cornerRadius;
+    border-bottom-right-radius: @cornerRadius;
+
+    .row {
+      margin: 0;
+    }
+
+    &#minmax .row {
+      padding: (2 * @lineHeight) @lineHeight (2 * @lineHeight) 0;
+    }
+
+    &#exact .row {
+      padding: (7 * @lineHeight) @lineHeight (7 * @lineHeight) 0;
+    }
+  }
+}
+
+.word-lengths {
+  .column {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+#total {
+  text-align: center;
+}
+
+#response {
+  #list {
+    ul ul, ul ol {
+      text-align: center;
+    }
+  }
+}
+
+#response-nav {
+  li {
+    .linkStyles();
+
+    a {
+      font-size: floor(2.5 * @lineHeight);
+      padding: 2 * @lineHeight;
+    }
+
+    &:first-child {
+      border-top-left-radius: @cornerRadius;
+      border-bottom-left-radius: @cornerRadius;
+    }
+
+    &:last-child {
+      border-top-right-radius: @cornerRadius;
+      border-bottom-right-radius: @cornerRadius;
+    }
+  }
+}
+
+.row .input input[type="text"] {
+  min-width: 80%;
+}
+
+@media only screen and (max-width: 767px) {
+  #option-nav {
+    li {
+      font-size: 2 * @lineHeight;
+      line-height: 2 * @lineHeight;
+
+      &:first-child {
+        border-bottom-left-radius: (4 * @lineHeight) (2 * @lineHeight);
+      }
+
+      &:last-child {
+        border-bottom-right-radius: (4 * @lineHeight) (2 * @lineHeight);
+      }
+    }
+  }
+
+  #options {
+    .word-lengths {
+      label {
+        text-align: center;
+      }
+
+      input {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .word-lengths .panes-nav {
+    margin: 0;
+
+    li {
+      display: inline-block;
+      width: 50%;
+      *clear: none;
+      *float: left;
+      *display: inline;
+
+      height: 6 * @lineHeight;
+      line-height: 5 * @lineHeight;
+      font-size: 2 * @lineHeight;
+
+      a {
+        padding: @lineHeight 0;
+        text-align: center;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: 0;
+        border-top-right-radius: @cornerRadius;
+      }
+    }
+  }
+
+  .word-lengths .panes-content {
+    .pane {
+      border-top-right-radius: 0;
+      border-bottom-left-radius: @cornerRadius;
+    }
+  }
+
+  #response-nav {
+    li a {
+      font-size: 2 * @lineHeight;
+    }
+  }
+}
